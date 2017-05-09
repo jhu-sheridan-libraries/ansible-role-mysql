@@ -7,7 +7,7 @@
     owner: root
     group: root
     mode: 0644
-    state: present
+    state: file
 
 - name: Copy my.cnf global MySQL configuration
   become: true

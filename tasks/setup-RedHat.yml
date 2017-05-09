@@ -1,0 +1,9 @@
+---
+- name: Ensure MariaDB yum repo is installed
+  become: true
+  template:
+    src: mariadb.repo.j2
+    dest: /etc/yum.repos.d/mariadb.repo
+    owner: root
+    group: root
+    mode: 0644

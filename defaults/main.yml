@@ -1,2 +1,69 @@
 ---
 # defaults file for jhu_mysql
+
+mysql_user_username: root
+mysql_user_password: password
+
+mysql_root_username: root
+mysql_root_home: /root
+mysql_root_password: password
+
+mysql_user_password_update: no
+mysql_root_password_update: no
+
+#Variables set by operating specific variable file
+# mysql_config_file: /etc/my.cnf
+# mysql_config_include_dir: /etc/my.cnf.d
+
+mysql_enabled_on_startup: yes
+
+#update my.cnf each time a role is run? yes|no
+overwrite_global_mycnf: yes
+
+#Define a custom list of packages to install; if none provided, use the default package
+# from os specific var files
+# mysql_packages:
+#   - mysql
+#   - mysql-server
+#   - MySQL-python
+
+mysql_config_include_files: []
+# - src: path/relative/to/your/playbook/file.cnf
+# - {src: path/relative/to/your/otherplaybook/file.cnf, force: yes}
+
+
+mysql_bind_address: '0.0.0.0'
+mysql_datadir: /var/lib/mysql
+mysql_port: "3306"
+mysql_skip_name_resolve: no
+mysql_sql_mode: ''
+#set by operating specific var files
+# mysql_pid_file: /var/run/mysqld/mysqld.pid
+# mysql_socket_file: /var/lib/mysql/mysql.sock
+
+#slow query log settings
+mysql_slow_query_log_enabled: no
+mysql_sloq_query_time: "2"
+#variable set by operating specific variable file
+# mysql_slow_query_log: /var/log/mysql-slow.log
+
+#Memory settings
+mysql_key_buffer_size: "256M"
+
+#mysqldump settings
+mysql_mysqldump_max_allowed_packet: "64M"
+
+#Logging settings
+mysql_log: ""
+
+#databases
+mysql_databases: []
+# -name: example
+#  collation: utf8_general_cli
+#  encoding: utf8
+#  replicate: 1
+#Users
+mysql_users: []
+# -name: example
+
+mariadb_version: 10.2

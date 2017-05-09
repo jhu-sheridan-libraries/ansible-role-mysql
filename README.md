@@ -1,7 +1,8 @@
-Role Name
+Ansible Role: MySQL
 =========
+Installs and configures MySQL or MariaDB on CentOS 7 for JHU Sheridan Libraries 
 
-A brief description of the role goes here.
+(based largely on Jeff Geerling's ansible-role-mysql)
 
 Requirements
 ------------
@@ -30,7 +31,7 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+MIT / BSD
 
 Author Information
 ------------------

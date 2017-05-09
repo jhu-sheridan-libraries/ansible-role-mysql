@@ -1,2 +1,35 @@
 ---
 # tasks file for jhu_mysql
+- include: "setup-{{ ansible_os_family }}.yml"
+- include: variables.yml
+
+- name: Ensure mysql_packages are installed
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  register: __mysql_install_packages
+  with_items:
+    - "{{ mysql_packages }}"
+
+- name: Check if packages were installed
+  set_fact:
+    mysql_packages_installed: "{{ __mysql_install_packages is defined and __mysql_install_packages.changed }}"
+
+- name: Create tmpfiles.d entry for /run/mariadb
+  become: true
+  copy:
+    src: mariadb-tmpfiles.conf
+    dest: /etc/tmpfiles.d/mariadb.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: create systemd tmpfiles
+
+- meta: flush_handlers
+
+# Configure MySQL/MariaDB
+- include: configure.yml
+- include: secure-installation.yml
+- include: databases.yml
+- include: users.yml

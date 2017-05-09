@@ -1,4 +1,14 @@
 ---
+- name: Copy mysql.pam to /etc/pam.d/mysql 
+  become: true
+  file:
+    src: mysql.pam
+    dest: /etc/pam.d/mysql
+    owner: root
+    group: root
+    mode: 0644
+    state: present
+
 - name: Copy my.cnf global MySQL configuration
   become: true
   template:
